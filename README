@@ -1,6 +1,6 @@
-#MATLAB program that recognizes a person by his/her ECG
+#	MATLAB program that recognizes a person by his/her ECG
 
-###	==================== ex1.m ====================
+================ ex1.m ================
 
 	In ex1.m we observe how the amplitude of the input signal is reduced
 more and more as we increase the value of our transfer function's exponte.
@@ -8,7 +8,7 @@ more and more as we increase the value of our transfer function's exponte.
 the peaks a little more 'rounded' than the input signal. That's because of 
 the convolution with our transfer function that harmonizes the signal.
 
-###	=============== ECG Recognition ===============
+================ ECG Recognition ================
 
 	Having a database of ECG signals, both filtered and raw, we'll recognize
 the person's number by analyzing the ECG.
@@ -21,10 +21,10 @@ matrix, one for each person) as it follows:
 	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
 	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
 	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
-	[							.						   ]
-DB =[ 							.						   ]
-	[							.						   ]
-	[							.						   ]
+	[			.			       ]
+DB =	[ 			.			       ]
+	[			.			       ]
+	[			.			       ]
 	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
 
 	We then apply the same procedure for the signal passed as
@@ -43,8 +43,8 @@ combination of highpass and lowpass filters (a bandpass).
 to generate the transfer function H.
 
 
-### Additional helping programs:
+-> Additional helping programs:
 
-printECG(signal) 		-> plots the ECG
+printECG(signal) 	-> plots the ECG
 printECGFFT(signal) 	-> plots the signal in amplitude and frequency
-test()					-> checker for 'ECG-DB' database
+test()			-> checker for 'ECG-DB' database
