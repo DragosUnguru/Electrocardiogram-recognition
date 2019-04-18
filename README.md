@@ -1,0 +1,50 @@
+#MATLAB program that recognizes a person by his/her ECG
+
+###	==================== ex1.m ====================
+
+	In ex1.m we observe how the amplitude of the input signal is reduced
+more and more as we increase the value of our transfer function's exponte.
+	Moreover, as we zoom into the signal we can see how the output signal has
+the peaks a little more 'rounded' than the input signal. That's because of 
+the convolution with our transfer function that harmonizes the signal.
+
+###	=============== ECG Recognition ===============
+
+	Having a database of ECG signals, both filtered and raw, we'll recognize
+the person's number by analyzing the ECG.
+
+	The technique used consists in applying a Fourier transformation
+on the signal, fetching the most relevant amplitudes returned by the
+FFT and its frequency. Then we populate our own database (a 90 lines
+matrix, one for each person) as it follows:
+
+	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
+	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
+	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
+	[							.						   ]
+DB =[ 							.						   ]
+	[							.						   ]
+	[							.						   ]
+	[amplitude frequency amplitude frequency .... ampl freq]	-> spikeNumber * 2 elements
+
+	We then apply the same procedure for the signal passed as
+parameter in our function 'ecg_function(signal, isRaw)' and
+we recognize the person comparing the maximum euclidian distance
+between the points of the characteristic vector of the 'signal'
+and our database.
+
+	Using this technique, we don't have to compare the 5000 
+values that builds the signal, we can actually work with 
+only spikeNumber = 2-3 points.
+
+	For raw, noisy signals we first filter them using a 
+combination of highpass and lowpass filters (a bandpass).
+	For this step I've used the Chebyshev Type II filter
+to generate the transfer function H.
+
+
+### Additional helping programs:
+
+printECG(signal) 		-> plots the ECG
+printECGFFT(signal) 	-> plots the signal in amplitude and frequency
+test()					-> checker for 'ECG-DB' database
